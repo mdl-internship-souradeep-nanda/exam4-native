@@ -1,15 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './Header.css';
+import { View, Text } from 'react-native';
+
+// import './Header.css';
+
+import style from './Header.styles';
 
 const Header = props => (
-  <div className="Header" >
-    <span>Quizzy</span>
-    <span className="Header-greet">
+  <View style={style.Header} >
+    <Text style={style.HeaderGreet}>Quizzy</Text>
+    <Text style={style.HeaderGreet}>
       {props.username.length ? `Hello ${props.username}` : ''}
-    </span>
-  </div>
+    </Text>
+  </View>
 );
 
 Header.propTypes = {
