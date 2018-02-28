@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './LoginContainer.css';
+import { View, Button, TextInput } from 'react-native';
+
+// import './LoginContainer.css';
+import style from './LoginContainer.styles';
 
 class LoginContainer extends React.Component {
   constructor(props) {
@@ -12,17 +15,22 @@ class LoginContainer extends React.Component {
   }
   render() {
     return (
-      <div className="LoginContainer" >
-        <input onChange={
-          (evt) => {
-            this.setState({ username: evt.target.value });
+      <View style={style.LoginContainer} >
+        <TextInput
+          style={style.LoginContainerInput}
+          onChangeText={
+            (text) => {
+              this.setState({ username: text });
+            }
           }
-        }
+
+          value={this.state.username}
         />
-        <button onClick={() => this.props.onLogin(this.state.username)}>
-          LOGIN
-        </button>
-      </div>);
+        <Button
+          onPress={() => this.props.onLogin(this.state.username)}
+          title="Login"
+        />
+      </View>);
   }
 }
 
