@@ -1,7 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 
-import './MyApp.css';
+import { ScrollView } from 'react-native';
+
+// import './MyApp.css';
+import style from './MyApp.styles';
 
 import Header from '../Header/Header';
 import LoginContainer from '../LoginContainer/LoginContainer';
@@ -79,10 +82,10 @@ class MyApp extends React.Component {
     }[this.state.currentPage];
 
     return (
-      <div className="MyApp" >
+      <ScrollView style={style.MyApp} >
         <Header username={this.state.username} />
         {bodyJsx}
-      </div>
+      </ScrollView>
     );
   }
 }
