@@ -1,11 +1,14 @@
 import React from 'react';
 import axios from 'axios';
 
+import { ScrollView, Text, Button } from 'react-native';
+
 import PropTypes from 'prop-types';
 
 import externals from '../externals.json';
 
-import './LeaderboardContainer.css';
+// import './LeaderboardContainer.css';
+import style from './LeaderboardContainer.styles';
 
 import LeaderboardRow from '../LeaderboardRow/LeaderboardRow';
 
@@ -39,18 +42,17 @@ class LeaderboardContainer extends React.Component {
     // console.log(this.state.scores);
     const self = this.state.scores.filter(score => (score.username === this.props.username))[0];
     return (
-      <div className="LeaderboardContainer" >
-        <div className="LeaderboardContainer-score">
+      <ScrollView style={style.LeaderboardContainer} >
+        <Text style={style.LeaderboardContainerScore} >
           Your score: {self ? self.score : 0}
-        </div>
+        </Text>
         {this.getAllRows(this.props.username)}
-        <button
-          className="LeaderboardContainer-button"
-          onClick={this.props.backToLogin}
-        >
-          Go back
-        </button>
-      </div>
+        <Button
+          style={style.LeaderboardContainerButton}
+          onPress={this.props.backToLogin}
+          title="Go Back"
+        />
+      </ScrollView>
     );
   }
 }
