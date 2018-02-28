@@ -2,41 +2,57 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import './QuestionContainer.css';
+import { View, Text } from 'react-native';
+import RadioForm from 'react-native-simple-radio-button';
+
+// import './QuestionContainer.css';
+import style from './QuestionContainer.styles';
 
 const getHeader = id => (
-  <div className="QuestionContainer-header">
-    <h1> {id} </h1>
-  </div>
+  <View style={style.QuestionContainerHeader}>
+    <Text> {id} </Text>
+  </View>
 );
 
 const getQuestionDiv = question => (
-  <div className="QuestionContainer-question">
-    <p> {question} </p>
-  </div>
+  <View style={style.QuestionContainerQuestion}>
+    <Text> {question} </Text>
+  </View>
 );
 
-const getOptionsDiv = (id, options, selected, onCheckedChanged) => options
-  .filter(option => option !== null)
-  .map((option) => {
-    const isChecked = option === selected;
-    const key = `${option}`;
-    return (
-      <div key={key} className="QuestionContainer-options">
-        <input
-          type="radio"
-          name={`question${id}`}
-          value={option}
-          checked={isChecked}
-          onChange={onCheckedChanged}
-        />
-        <span>{option}</span>
-      </div>
-    );
-  });
+const getOptionsDiv = (id, options, selected, onCheckedChanged) => {
+  const filteredOptions = options.filter(option => option !== null);
+  const propsGroup = filteredOptions.map(option => ({
+    label: option,
+    value: option,
+  }));
+  return (
+    <RadioForm
+      radio_props={propsGroup}
+      initial={options.indexOf(selected)}
+      onPress={onCheckedChanged}
+    />
+  );
+  // .map((option) => {
+  //   const isChecked = option === selected;
+  //   const key = `${option}`;
+  //   return (
+  //     <View key={key} style={style.QuestionContainerOptions}>
+  //       <input
+  //         type="radio"
+  //         name={`question${id}`}
+  //         value={option}
+  //         checked={isChecked}
+  //         onChange={onCheckedChanged}
+  //       />
+  //       <Text>{option}</Text>
+  //     </View>
+  //   );
+  // });
+};
 
 const QuestionContainer = props => (
-  <div className="QuestionContainer" >
+  <View style={style.QuestionContainer} >
     {getHeader(props.id)}
     {getQuestionDiv(props.question)}
     {getOptionsDiv(
@@ -45,7 +61,7 @@ const QuestionContainer = props => (
       props.answer,
       props.onCheckedChanged,
     )}
-  </div>
+  </View>
 );
 
 QuestionContainer.propTypes = {
