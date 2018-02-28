@@ -27,11 +27,14 @@ const getOptionsDiv = (id, options, selected, onCheckedChanged) => {
     value: option,
   }));
   return (
-    <RadioForm
-      radio_props={propsGroup}
-      initial={options.indexOf(selected)}
-      onPress={onCheckedChanged}
-    />
+    <View>
+      <RadioForm
+        radio_props={propsGroup}
+        initial={options.indexOf(selected)}
+        onPress={onCheckedChanged}
+      />
+      <Text>{options.indexOf(selected)}</Text>
+    </View>
   );
   // .map((option) => {
   //   const isChecked = option === selected;
