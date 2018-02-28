@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { View, Button, TextInput } from 'react-native';
+import { View, Button, TextInput, Text } from 'react-native';
 
 // import './LoginContainer.css';
 import style from './LoginContainer.styles';
@@ -16,6 +16,9 @@ class LoginContainer extends React.Component {
   render() {
     return (
       <View style={style.LoginContainer} >
+        <View style={style.LoginContainerBlue} >
+          <Text>Welcome to Quizzy!</Text>
+        </View>
         <TextInput
           style={style.LoginContainerInput}
           onChangeText={
