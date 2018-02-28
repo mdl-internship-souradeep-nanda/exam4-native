@@ -1,5 +1,4 @@
 const QuizContainer = {
-  overflow: 'auto',
 };
 
 const QuizContainerSubmit = {

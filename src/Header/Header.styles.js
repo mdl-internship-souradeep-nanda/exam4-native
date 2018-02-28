@@ -6,6 +6,7 @@ module.exports = {
     // color: 'white',
     padding: '1%',
     marginTop: 100,
+    zIndex: 2,
   },
 
   HeaderGreet: {
