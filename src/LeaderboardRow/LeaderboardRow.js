@@ -1,19 +1,25 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
-import './LeaderboardRow.css';
+// import './LeaderboardRow.css';
+import { Text, View } from 'react-native';
+
+import style from './LeaderboardRow.styles';
 
 const LeaderboardRow = props => (
-  <div className="LeaderboardRow" >
-    <span
-      className={`LeaderboardRow-user ${props.username === props.currentUser ? 'selected' : ''}`}
+  <View style={style.LeaderboardRow} >
+    <Text
+      style={
+        props.username === props.currentUser ?
+          style.LeaderboardRowUser : style.selected
+      }
     >
       {props.username}
-    </span>
-    <span className="LeaderboardRow-score">
+    </Text>
+    <Text style={style.LeaderboardRowScore}>
       {props.score}
-    </span>
-  </div>
+    </Text>
+  </View>
 );
 
 LeaderboardRow.propTypes = {
