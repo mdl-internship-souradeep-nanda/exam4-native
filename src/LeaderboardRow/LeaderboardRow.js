@@ -10,7 +10,7 @@ const LeaderboardRow = props => (
   <View style={style.LeaderboardRow} >
     <Text
       style={
-        props.username === props.currentUser ?
+        props.username !== props.currentUser ?
           style.LeaderboardRowUser : style.selected
       }
     >
