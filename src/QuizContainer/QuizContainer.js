@@ -1,9 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 
+import { Button, ScrollView } from 'react-native';
+
 import PropTypes from 'prop-types';
 
-import './QuizContainer.css';
+// import './QuizContainer.css';
+import style from './QuizContainer.styles';
 
 import QuestionContainer from '../QuestionContainer/QuestionContainer';
 
@@ -44,8 +47,8 @@ class QuizContainer extends React.Component {
       />);
     })
 
-  setAnswer = questionId => (evt) => {
-    const { value } = evt.target;
+  setAnswer = questionId => (value) => {
+    // const { value } = evt.target;
     this.setState({
       answers: {
         ...this.state.answers,
@@ -108,16 +111,15 @@ class QuizContainer extends React.Component {
     // console.log(this.state.ids);
     const questionsJsx = this.getQuestionsJsx();
     return (
-      <div className="QuizContainer" >
+      <ScrollView style={style.QuizContainer} >
         {questionsJsx}
-        <button
-          className="QuizContainer-submit"
-          onClick={this.submitAnswers}
+        <Button
+          style={style.QuizContainerSubmit}
+          onPress={this.submitAnswers}
           disabled={!this.allAnswersChecked()}
-        >
-          SUBMIT
-        </button>
-      </div>
+          title="SUBMIT"
+        />
+      </ScrollView>
     );
   }
 }
